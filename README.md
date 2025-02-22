@@ -1,38 +1,17 @@
-# sv
+# Raker
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Ik houd al twintig jaar een blog bij; dat is niet helemaal eerlijk, ik heb tussen 2005 en 2015 zeer regelmatig, bijna wekelijks een blog bijgehouden. In eerste instantie was dat een wekelijkse column die ik in de Volkskrant, mijn toenmalige werkgever, had. Aanleiding was mijn oprichting van het Volkskrantblog, dat later een niet-zo-zachte dood is gestorven.
 
-## Creating a project
+In 2015 ben ik ermee opgehouden en heb ik mijn blog op pauze gezet. Ik werkte toen bij de VPRO en had te weinig tijd om er voldoende aandacht aan te besteden.
 
-If you're seeing this, you've probably already done this step. Congrats!
+Recente ontwikkelingen in het digitale domein hebben mij gemotiveerd om de draad weer op te pakken. Ik ben in januari weer begonnen, op mijn oude wordpress-site; maar ik vind dat ik die eigenlijk niet meer kan gebruiken. Onder het motto dat een timmerman zijn gereedschap moet kennen, vind ik dat ik, als autodidact 'digitaal expert, ook mijn eigen blog moet kunnen bouwen.
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Werk in uitvoering
 
-# create a new project in my-app
-npx sv create my-app
-```
+Daarmee ben ik nu bezig; en wat je in deze repository ziet, is het resultaat van mijn inspanningen. Ik gebruik Svelte en Supabase; geen css-framework. Ik probeer zo goed mogelijk semantische html te schrijven; en uiteraard moet deze site ook volledig responsive worden.
 
-## Developing
+## Aansluiting op het Fediverse
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Mijn ambitie is om deze site en dus mijn blog-posts aan te sluiten op het Fediverse. Mijn ideaal is het dat, voorzover mijn opvattingen aanleiding zijn voor debat, deze discussies op Mastodon gaan plaatsvinden. En dat ik tegelijkertijd het gesprek van daar ook hier naartoe kan halen. Ik weet niet of ik dat allemaal kan realiseren, maar vooruit, ik ga het proberen.
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Ik ben van plan om mijn eigen illustraties te maken bij mijn schrijfwerk. Ook de tekeningen zal ik op die manier distribueren, waarschijnlijk via Pixelfed.
