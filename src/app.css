@@ -74,6 +74,9 @@ li {
 	font-size: 2rem;
 	line-height: 1.4;
 }
+.tiny-text {
+	font-size: 1rem;
+}
 
 h1,
 h2,

@@ -1,5 +1,8 @@
 <script lang="ts">
 	import Logo from '$assets/logo.png';
+	import { getUserState } from '$lib/state/user-state.svelte';
+	let userContext = getUserState();
+	let { user } = $derived(userContext);
 </script>
 
 <header class="header mt-m">
@@ -7,6 +10,11 @@
 	<p>Het weblog van Geert-Jan Bogaerts</p>
 	<nav class="nav">
 		<ul>
+			{#if user}
+				<li class="tiny-text">Je bent ingelogd {user.email}</li>
+				<!-- svelte-ignore a11y_invalid_attribute -->
+				<li><a href="#" onclick={() => userContext.logout()}>Uitloggen</a></li>
+			{/if}
 			<li><a href="/archief">Archief</a></li>
 			<li><a href="/over">Over mij</a></li>
 		</ul>
