@@ -32,7 +32,7 @@ h1 {
 
 body {
 	font-family: 'Albert sans', sans-serif;
-	color: rgb(44, 33, 33);
+	color: rgb(44, 11, 11);
 	background-color: rgb(255, 245, 245);
 }
 
@@ -59,10 +59,12 @@ li {
 button {
 	font-family: 'Albert sans', sans-serif;
 	background-color: transparent;
-	border: none;
+	border: 1px solid;
+	border-radius: 8px;
 	cursor: pointer;
 	outline: none;
 	font-weight: 400;
+	font-size: 2.2rem;
 }
 
 /* TYPOGRAPHY */
@@ -171,4 +173,13 @@ a {
 
 a:hover {
 	text-decoration: underline;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+form * {
+	margin-bottom: 1.6rem;
+	width: 30rem;
 }
