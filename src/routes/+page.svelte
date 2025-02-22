@@ -2,7 +2,7 @@
 	import { stripHtml } from 'string-strip-html';
 	let { data } = $props();
 
-	$inspect(data.berichten);
+	// $inspect(data.berichten);
 
 	function parseDom(s: string): string {
 		let summary = s.slice(0, 900);
