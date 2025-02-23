@@ -74,9 +74,6 @@ li {
 	font-size: 2rem;
 	line-height: 1.4;
 }
-.tiny-text {
-	font-size: 1rem;
-}
 
 h1,
 h2,
@@ -87,7 +84,9 @@ h6,
 p {
 	margin: 0;
 }
-
+.tiny-text {
+	font-size: 1rem;
+}
 .small-font {
 	font-size: 1.4rem;
 }
@@ -150,7 +149,8 @@ p {
 }
 
 input,
-textarea {
+textarea,
+select {
 	font-family: 'Albert sans', sans-serif;
 	font-size: 2rem;
 	background-color: rgba(0, 0, 0, 0.035);
@@ -165,6 +165,7 @@ textarea {
 }
 
 textarea::placeholder,
+select::placeholder,
 input::placeholder {
 	font-size: 2rem;
 	font-weight: 400;
