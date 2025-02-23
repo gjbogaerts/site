@@ -1,6 +1,6 @@
 <script lang="ts">
 	let { user, content, title, publication_date, status, id } = $props();
-	console.log(user, content, title, publication_date, status, id);
+	// console.log(user, content, title, publication_date, status, id);
 	let userId = user.id != null ? user.id : user;
 	let postId = id != null ? id : null;
 </script>

@@ -4,7 +4,7 @@
 	import Edit from '$assets/edit.svg';
 	let { data } = $props();
 
-	$inspect(data);
+	// $inspect(data);
 </script>
 
 <DashboardHeader />

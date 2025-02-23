@@ -6,7 +6,7 @@
 	// $inspect(data);
 	// console.log(data.id);
 	const removePost = async (id) => {
-		console.log('Removing post with id ', id);
+		// console.log('Removing post with id ', id);
 		let response = await data.supabase.from('berichten').delete().eq('id', id);
 		redirect(303, '/prive/dashboard');
 	};
