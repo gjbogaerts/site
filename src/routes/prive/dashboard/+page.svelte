@@ -23,11 +23,11 @@
 				<td>{bericht.title}</td>
 				<td>{bericht.date}</td>
 				<td
-					><a href={`/prive/bericht/bewerk?id={$bericht.id}`}><img src={Edit} alt="Bewerken" /></a
+					><a href={`/prive/berichten/bewerk/${bericht.id}`}><img src={Edit} alt="Bewerken" /></a
 					></td
 				>
 				<td
-					><a href={`/prive/bericht/verwijder?id={$bericht.id}`}
+					><a href={`/prive/berichten/verwijder/${bericht.id}`}
 						><img src={Delete} alt="Verwijderen" /></a
 					></td
 				>
