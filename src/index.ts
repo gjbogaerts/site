@@ -183,3 +183,13 @@ export type CompositeTypes<
 	: PublicCompositeTypeNameOrOptions extends keyof PublicSchema['CompositeTypes']
 		? PublicSchema['CompositeTypes'][PublicCompositeTypeNameOrOptions]
 		: never;
+
+		export type Berichten {
+								content: string;
+					date: string;
+					id: number;
+					publication_date: string | null;
+					status: string;
+					title: string;
+					user_id: string;
+		}
