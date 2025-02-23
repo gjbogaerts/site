@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { stripHtml } from 'string-strip-html';
 	let { data } = $props();
 
-	// $inspect(data.berichten);
-
-	function parseDom(s: string): string {
-		let summary = s.slice(0, 900);
-		return stripHtml(summary).result;
+	function getFirstParagraph(htmlString: string): string {
+		const firstParagraphStart = htmlString.indexOf('<p>');
+		const firstParagraphEnd = htmlString.indexOf('</p>');
+		const firstParagraph = htmlString.slice(firstParagraphStart, firstParagraphEnd);
+		return firstParagraph;
 	}
 </script>
 
@@ -16,5 +15,5 @@
 	{:else}
 		<h2 class="mt-l mb-s">{bericht.title}</h2>
 	{/if}
-	<p>{parseDom(bericht.content)}</p>
+	{@html getFirstParagraph(bericht.content)}
 {/each}
