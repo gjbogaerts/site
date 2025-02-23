@@ -1,7 +1,7 @@
 // import { supabase } from '$lib/supabaseClient';
 import { redirect, fail } from '@sveltejs/kit';
 // import { setUserState } from '$lib/state/user-state.svelte.js';
-import { Marked } from '@ts-stack/markdown';
+// import { Marked } from '@ts-stack/markdown';
 
 export const actions = {
 	default: async (event: { request: any; locals?: any }) => {
@@ -17,18 +17,21 @@ export const actions = {
 		const publication_date = formData.get('publication_date') as Date;
 		const status = formData.get('status') as string;
 		const user_id = formData.get('user_id') as string;
-
+		const id = formData.get('id') as number;
 		// console.log(formData.FormData.title);
 		//van markdown naar html:
-		let contentToSave = Marked.parse(content);
+		// let contentToSave = Marked.parse(content);
 		// console.log(title, contentToSave, publication_date, status, user_id);
-		const { response, error } = await supabase.from('berichten').insert({
-			title,
-			content: contentToSave,
-			publication_date,
-			status,
-			user_id
-		});
+		const { response, error } = await supabase
+			.from('berichten')
+			.update({
+				title,
+				content,
+				publication_date,
+				status,
+				user_id
+			})
+			.eq('id', id);
 		if (error) {
 			fail(400, error);
 		}
