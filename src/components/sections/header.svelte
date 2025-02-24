@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Logo from '$assets/logo.png';
+	import Logo from '$assets/logo11.png';
 	import { getUserState } from '$lib/state/user-state.svelte';
 	let userContext = getUserState();
 	let { user } = $derived(userContext);
