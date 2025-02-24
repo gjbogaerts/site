@@ -11,9 +11,8 @@
 	<nav class="nav">
 		<ul>
 			{#if user}
-				<li class="tiny-text">Je bent ingelogd {user.email}</li>
-				<!-- svelte-ignore a11y_invalid_attribute -->
-				<li><a href="#" onclick={() => userContext.logout()}>Uitloggen</a></li>
+				<li><button onclick={() => userContext.logout()}>Uitloggen</button></li>
+				<li><a href="/prive/dashboard">Dashboard</a></li>
 			{/if}
 			<li><a href="/archief">Archief</a></li>
 			<li><a href="/over">Over mij</a></li>

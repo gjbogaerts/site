@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import { Header, Sidebar } from '$components';
+	import { Header, Sidebar, Footer } from '$components';
 	import { invalidate } from '$app/navigation';
 	import { setUserState } from '$lib/state/user-state.svelte';
 
@@ -32,6 +32,7 @@
 		<div class="main">{@render children()}</div>
 		<Sidebar />
 	</div>
+	<Footer />
 </div>
 
 <style>

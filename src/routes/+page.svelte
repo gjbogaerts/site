@@ -28,9 +28,9 @@
 	{/if}
 	{@html getFirstParagraph(bericht.content)}
 	<div class="meta mb-m mt-s">
-		<p class="datum">{getDatum(bericht)}</p>
-		<p class="link">
-			<a href={`/bericht/${sluggify(bericht.title)}/${bericht.id}`}>Lees verder &hellip;</a>
+		<p class="datum small-font">{getDatum(bericht)}</p>
+		<p class="link small-font">
+			<a href={`/bericht/${sluggify(bericht.title)}/${bericht.id}`}>Lees verder</a>&hellip;
 		</p>
 	</div>
 {/each}
@@ -41,10 +41,6 @@
 		justify-content: space-between;
 	}
 	.datum {
-		font-size: 1.6rem;
 		font-style: italic;
-	}
-	.link {
-		font-size: 1.6rem;
 	}
 </style>

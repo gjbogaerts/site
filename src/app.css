@@ -4,6 +4,12 @@
 	box-sizing: border-box;
 }
 
+:root {
+	--bgcolor: rgb(255, 245, 245);
+	--linecolor: rgb(245, 235, 235);
+	--color: rgb(44, 11, 11);
+}
+
 html {
 	font-size: 62.5%;
 }
@@ -32,8 +38,8 @@ h1 {
 
 body {
 	font-family: 'Albert sans', sans-serif;
-	color: rgb(44, 11, 11);
-	background-color: rgb(255, 245, 245);
+	color: var(--color);
+	background-color: var(--bgcolor);
 }
 
 a {
@@ -84,11 +90,11 @@ h6,
 p {
 	margin: 0;
 }
-.tiny-text {
-	font-size: 1rem;
+.tiny-font {
+	font-size: 1.4rem;
 }
 .small-font {
-	font-size: 1.4rem;
+	font-size: 1.6rem;
 }
 
 /* UTILITY CLASSES */
@@ -144,7 +150,7 @@ p {
 	display: block;
 }
 .underscore {
-	border-bottom: 1px solid lightgray;
+	border-bottom: 1px solid var(--linecolor);
 	width: 50%;
 }
 
@@ -153,7 +159,8 @@ textarea,
 select {
 	font-family: 'Albert sans', sans-serif;
 	font-size: 2rem;
-	background-color: rgba(0, 0, 0, 0.035);
+	background-color: var(--linecolor);
+	border-color: var(--color);
 	border-radius: 8px;
 	padding: 4px 12px;
 	outline: none;
@@ -186,4 +193,9 @@ form {
 form * {
 	margin-bottom: 1.6rem;
 	width: 30rem;
+}
+
+footer {
+	background-color: var(--linecolor);
+	padding: 2;
 }
