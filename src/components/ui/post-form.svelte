@@ -1,8 +1,14 @@
 <script lang="ts">
-	let { user, content, title, publication_date, status, id } = $props();
+	let { user, content, title, publication_date = '', status, id, tags = '' } = $props();
 	// console.log(user, content, title, publication_date, status, id);
 	let userId = user.id != null ? user.id : user;
 	let postId = id != null ? id : null;
+	let timeElapsed = Date.now();
+	let today = new Date(timeElapsed);
+	let dateValue = today.toISOString().slice(0, 10);
+	if (publication_date === '') {
+		publication_date = dateValue;
+	}
 </script>
 
 <form method="post">
@@ -25,6 +31,13 @@
 			>
 		</select>
 	</div>
+	<input
+		type="text"
+		name="tags"
+		placeholder="Een of meerdere, door een komma gescheiden, tags"
+		class="wide"
+		value={tags}
+	/>
 	<input type="hidden" name="user_id" value={userId} />
 	<input type="hidden" name="id" value={postId} />
 	<button>Opslaan</button>

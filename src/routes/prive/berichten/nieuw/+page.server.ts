@@ -17,21 +17,61 @@ export const actions = {
 		const publication_date = formData.get('publication_date') as Date;
 		const status = formData.get('status') as string;
 		const user_id = formData.get('user_id') as string;
+		const tags = formData.get('tags') as string;
+
+		const tagArray = tags.split(',');
+		const tagsToInsert = tagArray.map((tagNo) => {
+			let tagValue = tagNo.trim();
+			return { tag: tagValue };
+		});
+		// console.log(tagsToInsert);
 
 		// console.log(formData.FormData.title);
 		//van markdown naar html:
 		let contentToSave = Marked.parse(content);
 		// console.log(title, contentToSave, publication_date, status, user_id);
-		const { response, error } = await supabase.from('berichten').insert({
-			title,
-			content: contentToSave,
-			publication_date,
-			status,
-			user_id
-		});
+		let { error, data } = await supabase
+			.from('berichten')
+			.insert({
+				title,
+				content: contentToSave,
+				publication_date,
+				status,
+				user_id
+			})
+			.select();
+
 		if (error) {
 			fail(400, error);
 		}
+		// console.log(data);
+		if (data) {
+			let newPostId = data[0].id;
+			// console.log(`New Post: ${newPostId}`);
+			// console.log(tagsToInsert);
+			let tagResult = await supabase.from('tags').upsert(tagsToInsert, { ignoreDuplicates: true });
+
+			if (tagResult.error) {
+				fail(400, tagResult.error);
+			}
+			// now we select all given tags, and use the post id to link them together
+			let tagsToSearch = tagsToInsert.map((val) => {
+				return val.tag;
+			});
+			let tags = await supabase.from('tags').select().in('tag', tagsToSearch);
+			// and finally we instert postId and tagIds into cross-table
+			// console.log(tags);
+			if (tags.error) {
+				fail(400, tags.error);
+			}
+			let tagsToCrossFile = tags.data.map((val: any) => {
+				return { bericht_id: newPostId, tag: val.tag };
+			});
+			// console.log(tagsToCrossFile);
+			let finalResult = await supabase.from('bericht_x_tag').insert(tagsToCrossFile);
+			// console.log(finalResult);
+		}
+		// console.log(result.data);
 		redirect(303, '/prive/dashboard');
 	}
 };

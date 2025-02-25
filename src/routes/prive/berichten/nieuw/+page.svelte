@@ -7,4 +7,4 @@
 
 <DashboardHeader />
 <h1 class="mt-l mb-m">Nieuw bericht</h1>
-<PostForm {user} content="" title="" publication_date="" status="" id="null" />
+<PostForm {user} content="" title="" publication_date="" status="" id={null} tags="" />
