@@ -39,5 +39,12 @@ export const load: LayoutLoad = async ({ data, depends, fetch }) => {
 		data: { user }
 	} = await supabase.auth.getUser();
 
-	return { session, supabase, user };
+	const response = await supabase
+		.from('berichten')
+		.select('id, title, date, publication_date')
+		.order('date', { ascending: false })
+		.eq('user_id', '33869a5d-6ab2-40e6-ba59-78a11bde0691')
+		.range(0, 10);
+
+	return { session, supabase, user, response };
 };

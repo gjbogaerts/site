@@ -1,7 +1,10 @@
 <script lang="ts">
-	import type { Berichten, Database } from '../index.js';
-	import slugify from 'typescript-slugify';
+	import type { Berichten } from '../index.js';
+
 	let { data } = $props();
+	let bericht = data.bericht;
+	// $inspect(bericht);
+	// console.log(bericht);
 
 	function getFirstParagraph(htmlString: string): string {
 		const firstParagraphStart = htmlString.indexOf('<p>');
@@ -15,11 +18,20 @@
 		}
 		return bericht.date;
 	}
-	function sluggify(title: string) {
-		return slugify(title);
-	}
 </script>
 
+<article>
+	<h1 class="mb-l">{bericht.title}</h1>
+	<div class="meta-container">
+		<div class="date tiny-font">
+			{getDatum(bericht)}
+		</div>
+		<div class="tags small-font">Tag 1, tag 2</div>
+	</div>
+	{@html bericht.content}
+</article>
+
+<!-- 
 {#each data.berichten as bericht, index}
 	{#if index == 0}
 		<h1 class="mb-l">{bericht.title}</h1>
@@ -33,9 +45,18 @@
 			<a href={`/bericht/${sluggify(bericht.title)}/${bericht.id}`}>Lees verder</a>&hellip;
 		</p>
 	</div>
-{/each}
+{/each} -->
 
 <style>
+	article :global {
+		p {
+			margin: 2rem 0;
+		}
+	}
+	.meta-container {
+		display: flex;
+		justify-content: space-between;
+	}
 	.meta {
 		display: flex;
 		justify-content: space-between;

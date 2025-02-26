@@ -5,7 +5,8 @@
 	import { setUserState } from '$lib/state/user-state.svelte';
 
 	let { data, children } = $props();
-	let { session, supabase, user } = $derived(data);
+	let { session, supabase, user, response } = $derived(data);
+	// $inspect(data);
 
 	let userState = setUserState({ session: data.session, supabase: data.supabase, user: data.user });
 
@@ -30,7 +31,7 @@
 	<Header />
 	<div class="main-container mt-l">
 		<div class="main">{@render children()}</div>
-		<Sidebar />
+		<Sidebar {response} />
 	</div>
 	<Footer />
 </div>
