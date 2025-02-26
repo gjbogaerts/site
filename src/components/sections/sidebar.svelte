@@ -23,14 +23,12 @@
 	<div class="sticky">
 		<h3>Laatste tien</h3>
 		<ul>
-			{#each response.data as bericht, index}
-				{#if index > 0}
-					<li>
-						<span class="datum tiny-font">{getDatum(bericht)}</span><a
-							href={`/bericht/${sluggify(bericht.title)}/${bericht.id}`}>{bericht.title}</a
-						>
-					</li>
-				{/if}
+			{#each response.data as bericht}
+				<li>
+					<span class="datum tiny-font">{getDatum(bericht)}</span><a
+						href={`/bericht/${sluggify(bericht.title)}/${bericht.id}`}>{bericht.title}</a
+					>
+				</li>
 			{/each}
 		</ul>
 	</div>

@@ -1,10 +1,20 @@
 <script lang="ts">
 	import type { Berichten } from '../index.js';
+	import slugify from 'typescript-slugify';
 
 	let { data } = $props();
-	let bericht = data.bericht;
-	// $inspect(bericht);
+	let bericht: Berichten = data.bericht;
+
+	// $inspect(bericht?.bericht_x_tag);
 	// console.log(bericht);
+	let tags = bericht?.tags;
+	$inspect(tags);
+	const processTags = (): string | undefined => {
+		const tagLinks = tags?.map((tag) => {
+			return `<a href="/tag/${slugify(tag.tag)}/${tag.tags.id}">${tag.tag}</a>`;
+		});
+		return tagLinks?.join(', ');
+	};
 
 	function getFirstParagraph(htmlString: string): string {
 		const firstParagraphStart = htmlString.indexOf('<p>');
@@ -26,7 +36,10 @@
 		<div class="date tiny-font">
 			{getDatum(bericht)}
 		</div>
-		<div class="tags small-font">Tag 1, tag 2</div>
+		<div class="tags small-font">
+			<!-- {#each } -->
+			{@html processTags()}
+		</div>
 	</div>
 	{@html bericht.content}
 </article>

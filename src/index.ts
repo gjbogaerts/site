@@ -192,4 +192,9 @@ export type CompositeTypes<
 					status: string;
 					title: string;
 					user_id: string;
+					tags?: Tag[] | null
+		}
+
+		export type Tag {
+			tag: string
 		}
