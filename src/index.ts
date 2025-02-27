@@ -196,5 +196,6 @@ export type CompositeTypes<
 		}
 
 		export type Tag {
+			id: number,
 			tag: string
 		}

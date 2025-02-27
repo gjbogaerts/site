@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import { Header, Sidebar, Footer } from '$components';
+	import { page } from '$app/state';
 	import { invalidate } from '$app/navigation';
 	import { setUserState } from '$lib/state/user-state.svelte';
 
@@ -27,6 +28,10 @@
 	// $inspect(supabase);
 </script>
 
+<svelte:head>
+	<title>{page.data.title === undefined ? 'Raker' : page.data.title}</title>
+</svelte:head>
+
 <div class="default-margin">
 	<Header />
 	<div class="main-container mt-l">
@@ -39,7 +44,6 @@
 <style>
 	.main-container {
 		display: flex;
-
 		gap: 5rem;
 	}
 	.main {

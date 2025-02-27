@@ -1,6 +1,6 @@
 <script lang="ts">
 	let { data } = $props();
-	let { title, content, publication_date, date, id } = data;
+	let { title, content, publication_date, date, id } = $derived(data.data);
 
 	const getDate = () => {
 		if (publication_date != null) {

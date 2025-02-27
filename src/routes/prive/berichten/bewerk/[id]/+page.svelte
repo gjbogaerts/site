@@ -13,7 +13,7 @@
 	if (tags != null) {
 		tagArray = tags.map((tag: tagObject) => tag.tag);
 		tagValues = tagArray.join(', ');
-		console.log(tags);
+		// console.log(tags);
 	}
 </script>
 

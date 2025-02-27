@@ -3,12 +3,12 @@
 	import slugify from 'typescript-slugify';
 
 	let { data } = $props();
-	let bericht: Berichten = data.bericht;
+	let bericht: Berichten = $state(data.bericht);
 
 	// $inspect(bericht?.bericht_x_tag);
 	// console.log(bericht);
 	let tags = bericht?.tags;
-	$inspect(tags);
+	// $inspect(tags);
 	const processTags = (): string | undefined => {
 		const tagLinks = tags?.map((tag) => {
 			return `<a href="/tag/${slugify(tag.tag)}/${tag.tags.id}">${tag.tag}</a>`;
