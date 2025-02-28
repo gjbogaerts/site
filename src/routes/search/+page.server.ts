@@ -13,9 +13,9 @@ export const load: PageServerLoad = async ({ url }) => {
 		.textSearch('content', q)
 		.order('date', { ascending: false });
 
-	console.log(count);
-	console.log(data);
-	console.log(error);
+	// console.log(count);
+	// console.log(data);
+	// console.log(error);
 	return { count, data, error, q };
 	// }
 };
