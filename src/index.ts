@@ -184,18 +184,18 @@ export type CompositeTypes<
 		? PublicSchema['CompositeTypes'][PublicCompositeTypeNameOrOptions]
 		: never;
 
-		export type Berichten {
-								content: string;
-					date: string;
-					id: number;
-					publication_date: string | null;
-					status: string;
-					title: string;
-					user_id: string;
-					tags?: Tag[] | null
-		}
+export type Berichten = {
+	content: string;
+	date: string;
+	id: number;
+	publication_date: string | null;
+	status: string;
+	title: string;
+	user_id: string;
+	tags?: Tag[] | null;
+};
 
-		export type Tag {
-			id: number,
-			tag: string
-		}
+export type Tag = {
+	id: number;
+	tag: string;
+};
