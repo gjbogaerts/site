@@ -1,19 +1,19 @@
 import { supabase } from '$lib/supabaseClient';
 // import { fail } from '@sveltejs/kit';
 
-interface BerichtReturnData {
-	id: number;
-	title: string;
-	content: string;
-	date: string;
-	publication_date: string;
-	tags: Tag[];
-}
+// interface BerichtReturnData {
+// 	id: number;
+// 	title: string;
+// 	content: string;
+// 	date: string;
+// 	publication_date: string;
+// 	tags: Tag[];
+// }
 
-interface Tag {
-	tag: string;
-	tags: { id: number; tag: string }[];
-}
+// interface Tag {
+// 	tag: string;
+// 	tags: { id: number; tag: string }[];
+// }
 
 export async function load() {
 	// console.log(supabase);
@@ -25,7 +25,7 @@ export async function load() {
 		.limit(1)
 		.single();
 
-	console.log(data);
+	// console.log(data);
 
 	// console.log(error);
 	return {

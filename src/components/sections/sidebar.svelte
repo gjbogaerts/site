@@ -16,7 +16,10 @@
 
 <aside class="other-stuff">
 	<div class="zoeken">
-		<input type="search" placeholder="Zoeken" />
+		<form method="get" action="/search">
+			<input type="search" name="q" placeholder="Wat zoek je?" />
+			<button class="zoeken mt-s">Zoeken</button>
+		</form>
 	</div>
 
 	<div class="underscore"></div>
@@ -45,5 +48,9 @@
 	}
 	.sticky li span {
 		display: block;
+	}
+	.zoeken {
+		display: block;
+		/* padding: 1rem; */
 	}
 </style>

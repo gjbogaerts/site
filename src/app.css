@@ -6,7 +6,7 @@
 
 :root {
 	--bgcolor: rgb(255, 245, 245);
-	--linecolor: rgb(245, 235, 235);
+	--linecolor: rgb(225, 215, 215);
 	--color: rgb(44, 11, 11);
 }
 
@@ -152,6 +152,8 @@ p {
 .underscore {
 	border-bottom: 1px solid var(--linecolor);
 	width: 50%;
+	margin-left: 25%;
+	margin-right: 25%;
 }
 
 input,
@@ -169,6 +171,9 @@ select {
 }
 textarea {
 	height: 12rem;
+}
+button {
+	padding: 4px 12px;
 }
 
 textarea::placeholder,
