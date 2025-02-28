@@ -3,11 +3,11 @@
 	import slugify from 'typescript-slugify';
 
 	let { data } = $props();
-	let bericht: Berichten = $state(data.bericht);
+	let bericht = $state(data.bericht);
 
 	// $inspect(bericht?.bericht_x_tag);
 	// console.log(bericht);
-	let tags = bericht?.tags;
+	let tags = bericht!.tags;
 	// $inspect(tags);
 	const processTags = (): string | undefined => {
 		const tagLinks = tags?.map((tag) => {
@@ -31,17 +31,17 @@
 </script>
 
 <article>
-	<h1 class="mb-l">{bericht.title}</h1>
+	<h1 class="mb-l">{bericht!.title}</h1>
 	<div class="meta-container">
 		<div class="date tiny-font">
-			{getDatum(bericht)}
+			{getDatum(bericht!)}
 		</div>
 		<div class="tags small-font">
 			<!-- {#each } -->
 			{@html processTags()}
 		</div>
 	</div>
-	{@html bericht.content}
+	{@html bericht!.content}
 </article>
 
 <!-- 
@@ -70,11 +70,11 @@
 		display: flex;
 		justify-content: space-between;
 	}
-	.meta {
+	/* .meta {
 		display: flex;
 		justify-content: space-between;
 	}
 	.datum {
 		font-style: italic;
-	}
+	} */
 </style>
