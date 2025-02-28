@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type { Berichten } from '../index.js';
+	// import type { Berichten } from '../index.js';
+
 	import slugify from 'typescript-slugify';
 
 	let { data } = $props();
@@ -11,7 +12,7 @@
 	// $inspect(tags);
 	const processTags = (): string | undefined => {
 		const tagLinks = tags?.map((tag) => {
-			return `<a href="/tag/${slugify(tag.tag)}/${tag.tags.id}">${tag.tag}</a>`;
+			return `<a href="/tag/${slugify(tag.tag)}/${tag.id}">${tag.tag}</a>`;
 		});
 		return tagLinks?.join(', ');
 	};
@@ -22,7 +23,7 @@
 		const firstParagraph = htmlString.slice(firstParagraphStart, firstParagraphEnd);
 		return firstParagraph;
 	}
-	function getDatum(bericht: Berichten): string {
+	function getDatum(bericht: any): string {
 		if (bericht.publication_date != null) {
 			return bericht.publication_date;
 		}

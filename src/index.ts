@@ -189,9 +189,9 @@ export type Berichten = {
 	date: string;
 	id: number;
 	publication_date: string | null;
-	status: string;
+	status?: string | null;
 	title: string;
-	user_id: string;
+	user_id?: string | null;
 	tags?: Tag[] | null;
 };
 

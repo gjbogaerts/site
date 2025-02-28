@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { redirect } from '@sveltejs/kit';
-	import type { PageProps } from './$types';
-	let { data }: PageProps = $props();
+	// import type { PageProps } from './$types';
+	let { data } = $props();
 	// let slug = $Page.
 	// $inspect(data);
 	// console.log(data.id);
-	const removePost = async (id) => {
+	const removePost = async (id: number) => {
 		// console.log('Removing post with id ', id);
 		let response = await data.supabase.from('berichten').delete().eq('id', id);
 		redirect(303, '/prive/dashboard');
