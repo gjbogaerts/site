@@ -1,8 +1,14 @@
+import * as Sentry from '@sentry/sveltekit';
 import { createServerClient } from '@supabase/ssr';
-import { type Handle, redirect } from '@sveltejs/kit';
+import { type Handle, redirect, type HandleServerError } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
 
 import { PUBLIC_SUPABASE_PROJECT_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
+
+Sentry.init({
+	dsn: 'https://8b461a91e173f632b3f51cf911ac4560@o4508902956597248.ingest.de.sentry.io/4508902959218768',
+	tracesSampleRate: 1
+});
 
 const supabase: Handle = async ({ event, resolve }) => {
 	/**
@@ -83,4 +89,16 @@ const authGuard: Handle = async ({ event, resolve }) => {
 	return resolve(event);
 };
 
-export const handle: Handle = sequence(supabase, authGuard);
+export const handleError: HandleServerError = Sentry.handleErrorWithSentry(
+	async ({ error, event, status, message }) => {
+		const errorId = crypto.randomUUID();
+		Sentry.captureException(error, { extra: { event, errorId, status } });
+		return {
+			message:
+				'Oei, er is een fout opgetreden. Excuus, we proberen dit zo snel mogelijk te repareren.',
+			errorId
+		};
+	}
+);
+
+export const handle: Handle = sequence(Sentry.sentryHandle(), sequence(supabase, authGuard));
