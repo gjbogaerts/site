@@ -1,8 +1,10 @@
 // import { supabase } from '$lib/supabaseClient';
 import { redirect, fail } from '@sveltejs/kit';
+import { writeFileSync } from 'fs';
 // import { setUserState } from '$lib/state/user-state.svelte.js';
 import { Marked } from '@ts-stack/markdown';
 
+import { PUBLIC_SUPABASE_IMAGE_STORAGE } from '$env/static/public';
 export const actions = {
 	default: async (event: { request: any; locals?: any }) => {
 		const {
@@ -11,7 +13,19 @@ export const actions = {
 		} = event;
 		const formData = await request.formData();
 		// console.log(supabase);
+		// console.log(formData);
+		const image = formData.get('image') as File;
+		// console.log(image);
+		// writeFileSync(`static/${image.name}`, Buffer.from(await image.arrayBuffer()));
 
+		const uploadResonse = await supabase.storage
+			.from('images')
+			.upload(`${Math.random()}_${image.name}`, image);
+		if (uploadResonse.error != null) {
+			fail(400, { message: 'Image upload werkte niet' });
+		}
+		console.log(uploadResonse);
+		const imagePath = PUBLIC_SUPABASE_IMAGE_STORAGE + uploadResonse.data.fullPath;
 		const title = formData.get('title') as string;
 		const content = formData.get('content') as string;
 		const publication_date = formData.get('publication_date') as Date;
@@ -37,7 +51,8 @@ export const actions = {
 				content: contentToSave,
 				publication_date,
 				status,
-				user_id
+				user_id,
+				image: imagePath
 			})
 			.select();
 

@@ -192,6 +192,7 @@ export type Berichten = {
 	status?: string | null;
 	title: string;
 	user_id?: string | null;
+	image?: string | null;
 	tags?: Tag[] | null;
 };
 

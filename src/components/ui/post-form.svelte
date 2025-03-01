@@ -11,7 +11,7 @@
 	}
 </script>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 	<input type="text" name="title" placeholder="Titel" class="wide" value={title} />
 	<textarea name="content" placeholder="Je tekst" class="wide">{content}</textarea>
 	<div class="form-div-container">
@@ -38,6 +38,7 @@
 		class="wide"
 		value={tags}
 	/>
+	<input type="file" name="image" />
 	<input type="hidden" name="user_id" value={userId} />
 	<input type="hidden" name="id" value={postId} />
 	<button>Opslaan</button>
