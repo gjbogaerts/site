@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { DashboardHeader } from '$components';
+
+	import { getDatum } from '$lib/utils/get_date';
 	import Delete from '$assets/delete.svg';
 	import Edit from '$assets/edit.svg';
 	let { data } = $props();
@@ -21,7 +23,7 @@
 			<tr>
 				<td>{bericht.id}</td>
 				<td>{bericht.title}</td>
-				<td>{bericht.date}</td>
+				<td>{getDatum(bericht)}</td>
 				<td
 					><a href={`/prive/berichten/bewerk/${bericht.id}`}><img src={Edit} alt="Bewerken" /></a
 					></td

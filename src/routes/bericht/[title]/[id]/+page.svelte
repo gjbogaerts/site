@@ -1,5 +1,7 @@
 <script lang="ts">
 	import slugify from 'typescript-slugify';
+
+	import { getDatum } from '$lib/utils/get_date';
 	let { data } = $props();
 	let { title, content, publication_date, date, id, tags } = $derived(data.data);
 	interface tagObject {
@@ -7,12 +9,6 @@
 		tag: string;
 	}
 	// $inspect(tags);
-	const getDatum = () => {
-		if (publication_date != null) {
-			return publication_date;
-		}
-		return date;
-	};
 
 	const processTags = (): string | undefined => {
 		// return 'todo';
@@ -31,7 +27,7 @@
 	<h1 class="mb-m">{title}</h1>
 	<div class="meta-container">
 		<div class="date tiny-font">
-			{getDatum()}
+			{getDatum({ publication_date })}
 		</div>
 		<div class="tags small-font">
 			<!-- {#each } -->

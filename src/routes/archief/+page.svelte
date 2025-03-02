@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Berichten } from './../../index.ts';
+	import { getDatum } from '$lib/utils/get_date';
 	import slugify from 'typescript-slugify';
 	import { Pagination } from '$components';
 	let { data } = $props();
@@ -14,12 +15,6 @@
 		const firstParagraphEnd = htmlString.indexOf('</p>');
 		const firstParagraph = htmlString.slice(firstParagraphStart, firstParagraphEnd);
 		return firstParagraph;
-	}
-	function getDatum(bericht: Berichten): string {
-		if (bericht.publication_date != null) {
-			return bericht.publication_date;
-		}
-		return bericht.date;
 	}
 </script>
 

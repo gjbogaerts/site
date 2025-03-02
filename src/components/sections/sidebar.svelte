@@ -1,16 +1,11 @@
 <script lang="ts">
 	import slugify from 'typescript-slugify';
+
+	import { getDatum } from '$lib/utils/get_date';
 	const { response } = $props();
 
 	function sluggify(title: string) {
 		return slugify(title);
-	}
-
-	function getDatum(bericht: any): string {
-		if (bericht.publication_date != null) {
-			return bericht.publication_date;
-		}
-		return bericht.date;
 	}
 </script>
 

@@ -1,5 +1,7 @@
 <script lang="ts">
 	import slugify from 'typescript-slugify';
+
+	import { getDatum } from '$lib/utils/get_date';
 	const { data } = $props();
 	interface SearchResults {
 		id: number;
@@ -11,12 +13,6 @@
 	if (data.data && data.data.length > 0) {
 		results = data.data;
 	}
-	const getDatum = function (bericht: SearchResults): string {
-		if (bericht.publication_date !== null) {
-			return bericht.publication_date;
-		}
-		return bericht.date;
-	};
 </script>
 
 <h1 class="mb-m">Zoekresultaten voor "<em>{data.q}</em>"</h1>

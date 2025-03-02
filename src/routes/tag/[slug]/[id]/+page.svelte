@@ -1,5 +1,7 @@
 <script lang="ts">
 	import slugify from 'typescript-slugify';
+
+	import { getDatum } from '$lib/utils/get_date';
 	interface Content {
 		id: number;
 		date: string;
@@ -16,13 +18,6 @@
 	const { data }: TagPageProps = $props();
 	const content = $derived(data.content);
 	const tag = $derived(data.tag);
-
-	const getDatum = (b: Content) => {
-		if (b.publication_date) {
-			return b.publication_date;
-		}
-		return b.date;
-	};
 </script>
 
 <h1 class="mb-m">

@@ -3,6 +3,8 @@
 	import slugify from 'typescript-slugify';
 	import { Pagination } from '$components';
 
+	import { getDatum } from '$lib/utils/get_date';
+
 	let { data } = $props();
 	// $inspect(data.count);
 	// $inspect(data.currentPage);
@@ -18,12 +20,6 @@
 		const firstParagraphEnd = htmlString.indexOf('</p>');
 		const firstParagraph = htmlString.slice(firstParagraphStart, firstParagraphEnd);
 		return firstParagraph;
-	}
-	function getDatum(bericht: Berichten): string {
-		if (bericht.publication_date != null) {
-			return bericht.publication_date;
-		}
-		return bericht.date;
 	}
 </script>
 
