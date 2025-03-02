@@ -18,14 +18,14 @@ export const actions = {
 		// console.log(image);
 		// writeFileSync(`static/${image.name}`, Buffer.from(await image.arrayBuffer()));
 
-		const uploadResonse = await supabase.storage
+		const uploadResponse = await supabase.storage
 			.from('images')
 			.upload(`${Math.random()}_${image.name}`, image);
-		if (uploadResonse.error != null) {
+		if (uploadResponse.error != null) {
 			fail(400, { message: 'Image upload werkte niet' });
 		}
-		console.log(uploadResonse);
-		const imagePath = PUBLIC_SUPABASE_IMAGE_STORAGE + uploadResonse.data.fullPath;
+		// console.log(uploadResponse);
+		const imagePath = PUBLIC_SUPABASE_IMAGE_STORAGE + uploadResponse.data.fullPath;
 		const title = formData.get('title') as string;
 		const content = formData.get('content') as string;
 		const publication_date = formData.get('publication_date') as Date;

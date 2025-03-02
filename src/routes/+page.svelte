@@ -36,30 +36,30 @@
 			{@html processTags()}
 		</div>
 	</div>
-	{@html bericht!.content}
-</article>
-
-<!-- 
-{#each data.berichten as bericht, index}
-	{#if index == 0}
-		<h1 class="mb-l">{bericht.title}</h1>
-	{:else}
-		<h2 class="mt-l mb-s">{bericht.title}</h2>
-	{/if}
-	{@html getFirstParagraph(bericht.content)}
-	<div class="meta mb-m mt-s">
-		<p class="datum small-font">{getDatum(bericht)}</p>
-		<p class="link small-font">
-			<a href={`/bericht/${sluggify(bericht.title)}/${bericht.id}`}>Lees verder</a>&hellip;
-		</p>
+	<div class="content">
+		{#if bericht!.image !== null}
+			<img class="feature" src={bericht!.image} alt={`Illustratie bij ${bericht!.title}`} />
+		{/if}
+		{@html bericht!.content}
 	</div>
-{/each} -->
+</article>
 
 <style>
 	article :global {
 		p {
 			margin: 2rem 0;
 		}
+	}
+
+	.content .feature {
+		width: 100%;
+		float: none;
+	}
+
+	.content img {
+		float: left;
+		width: 40%;
+		margin: 1rem 2rem;
 	}
 	.meta-container {
 		display: flex;

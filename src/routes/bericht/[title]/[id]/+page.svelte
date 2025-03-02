@@ -3,7 +3,7 @@
 
 	import { getDatum } from '$lib/utils/get_date';
 	let { data } = $props();
-	let { title, content, publication_date, date, id, tags } = $derived(data.data);
+	let { title, content, publication_date, date, id, image, tags } = $derived(data.data);
 	interface tagObject {
 		id: number;
 		tag: string;
@@ -34,7 +34,12 @@
 			{@html processTags()}
 		</div>
 	</div>
-	{@html content}
+	<div class="content">
+		{#if image !== null}
+			<img class="feature" src={image} alt={`Illustratie bij ${title}`} />
+		{/if}
+		{@html content}
+	</div>
 </article>
 
 <style>
@@ -53,6 +58,18 @@
 			display: none;
 		}
 	}
+
+	.content img {
+		float: left;
+		width: 40%;
+		margin: 1rem 2rem;
+	}
+	.content img.feature {
+		width: 100%;
+		max-width: 100%;
+		float: none;
+	}
+
 	.meta-container {
 		display: flex;
 		justify-content: space-between;
