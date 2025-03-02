@@ -15,7 +15,7 @@
 	}
 </script>
 
-<h1 class="mb-m">Zoekresultaten voor "<em>{data.q}</em>"</h1>
+<h1 class="mb-m">Zoekresultaten voor "<em>{data.rawQ}</em>"</h1>
 <p class="mb-s">Er zijn {data.count} resultaten voor deze zoekterm gevonden.</p>
 <ol>
 	{#each results as bericht}

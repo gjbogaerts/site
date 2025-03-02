@@ -5,7 +5,8 @@ export const load: PageServerLoad = async ({ url }) => {
 	// console.log(searchParams.values());
 	// for (const p of searchParams) {
 	// console.log(searchParams.getAll('q')[0]);
-	const q = searchParams.getAll('q')[0];
+	const rawQ = searchParams.getAll('q')[0];
+	const q = rawQ.replaceAll(/\s+/g, '+');
 	// return { q };
 	const { data, error, count } = await supabase
 		.from('berichten')
@@ -16,6 +17,6 @@ export const load: PageServerLoad = async ({ url }) => {
 	// console.log(count);
 	// console.log(data);
 	// console.log(error);
-	return { count, data, error, q };
+	return { count, data, error, rawQ };
 	// }
 };
