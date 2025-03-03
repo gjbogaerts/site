@@ -7,7 +7,7 @@
 
 <header class="header mt-m">
 	<a href="/"> <img src={Logo} alt="Logo Raker" class="logo" /></a>
-	<p>Het weblog van Geert-Jan Bogaerts</p>
+	<p class="motto">Het weblog van Geert-Jan Bogaerts</p>
 	<nav class="nav">
 		<ul>
 			{#if user}
@@ -38,5 +38,29 @@
 	.nav a {
 		text-decoration: none;
 		font-weight: bold;
+	}
+	@media screen and (max-width: 1100px) {
+		p.motto {
+			display: none;
+		}
+		header {
+			position: relative;
+			height: 13rem;
+		}
+		header::after {
+			position: absolute;
+			font-size: 2rem;
+			content: 'Weblog van Geert-Jan Bogaerts';
+			top: 12rem;
+			display: block;
+			width: 100%;
+			text-align: center;
+		}
+	}
+	@media screen and (max-width: 600px) {
+		.nav ul {
+			flex-direction: column;
+			gap: 1em;
+		}
 	}
 </style>

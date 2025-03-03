@@ -48,5 +48,7 @@
 	.meta-container {
 		display: flex;
 		justify-content: space-between;
+		align-items: flex-start;
+		gap: 2rem;
 	}
 </style>

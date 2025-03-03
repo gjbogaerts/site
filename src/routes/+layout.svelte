@@ -49,4 +49,14 @@
 	.main {
 		flex: 3;
 	}
+
+	@media screen and (max-width: 1100px) {
+		.main-container {
+			display: flex;
+			flex-direction: column;
+		}
+		.main {
+			width: 100%;
+		}
+	}
 </style>

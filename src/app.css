@@ -202,5 +202,14 @@ form * {
 
 footer {
 	background-color: var(--linecolor);
-	padding: 2;
+	padding: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+	html {
+		font-size: 50%;
+	}
+	footer {
+		padding: 1rem;
+	}
 }
