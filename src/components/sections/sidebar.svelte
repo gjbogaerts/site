@@ -1,7 +1,7 @@
 <script lang="ts">
 	import slugify from 'typescript-slugify';
 
-	import { getDatum } from '$lib/utils/get_date';
+	import { getDatum } from '$lib/utils/strings';
 	const { response } = $props();
 
 	function sluggify(title: string) {

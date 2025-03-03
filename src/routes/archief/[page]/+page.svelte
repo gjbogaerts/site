@@ -3,7 +3,7 @@
 	import slugify from 'typescript-slugify';
 	import { Pagination } from '$components';
 
-	import { getDatum } from '$lib/utils/get_date';
+	import { getDatum } from '$lib/utils/strings';
 
 	let { data } = $props();
 	// $inspect(data.count);

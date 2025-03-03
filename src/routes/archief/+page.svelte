@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Berichten } from './../../index.ts';
-	import { getDatum } from '$lib/utils/get_date';
+	import { getDatum, getFirstParagraph } from '$lib/utils/strings.js';
 	import slugify from 'typescript-slugify';
 	import { Pagination } from '$components';
 	let { data } = $props();
@@ -9,14 +9,15 @@
 	const currentPage = 1;
 	let berichten: Berichten[] = data.data as unknown as Berichten[];
 	// // $inspect(aantal);
-
-	function getFirstParagraph(htmlString: string): string {
-		const firstParagraphStart = htmlString.indexOf('<p>');
-		const firstParagraphEnd = htmlString.indexOf('</p>');
-		const firstParagraph = htmlString.slice(firstParagraphStart, firstParagraphEnd);
-		return firstParagraph;
-	}
 </script>
+
+<svelte:head>
+	<title>Archief | Raker</title>
+	<meta
+		name="description"
+		content="Het complete archief van Raker. Een weblog van Geert-Jan Bogaerts, met een serie posts die zijn gechreven tussen 2005 en 2015, met een hervatting in 2025"
+	/>
+</svelte:head>
 
 <div class="archief">
 	<Pagination {totalCount} {currentPage} />

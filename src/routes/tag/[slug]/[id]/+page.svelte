@@ -1,7 +1,7 @@
 <script lang="ts">
 	import slugify from 'typescript-slugify';
 
-	import { getDatum } from '$lib/utils/get_date';
+	import { getDatum } from '$lib/utils/strings';
 	interface Content {
 		id: number;
 		date: string;
@@ -19,6 +19,12 @@
 	const content = $derived(data.content);
 	const tag = $derived(data.tag);
 </script>
+
+<svelte:head>
+	<title>{tag}-tag</title>
+	<meta name="description" content={`Alle artikelen op raker.nl getagd met ${tag}`} />
+	<meta name="keywords" content={tag} />
+</svelte:head>
 
 <h1 class="mb-m">
 	Alle content getagd met <em>{tag}</em>

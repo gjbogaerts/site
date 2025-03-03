@@ -1,3 +1,10 @@
+<svelte:head>
+	<title>Over Raker - weblog van Geert-Jan Bogaerts</title>
+	<meta
+		name="description"
+		content="Het hoe en waarom van het weblog van Geert-Jan Bogaerts. Bonus: waar komt de naam Raker vandaan?"
+	/>
+</svelte:head>
 <article>
 	<h1>Over Raker</h1>
 	<p>

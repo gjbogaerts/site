@@ -1,7 +1,7 @@
 <script lang="ts">
 	import slugify from 'typescript-slugify';
 
-	import { getDatum } from '$lib/utils/get_date';
+	import { getDatum } from '$lib/utils/strings.js';
 	const { data } = $props();
 	interface SearchResults {
 		id: number;
@@ -14,6 +14,12 @@
 		results = data.data;
 	}
 </script>
+
+<svelte:head>
+	<title>Raker | zoekresultaten voor {data.rawQ}</title>
+	<meta name="description" content={`${results[0]?.title || 'Geen resultaten'}`} />
+	<meta name="keywords" content="Raker, Big Tech, PublicSpaces, Digitale samenleving" />
+</svelte:head>
 
 <h1 class="mb-m">Zoekresultaten voor "<em>{data.rawQ}</em>"</h1>
 <p class="mb-s">Er zijn {data.count} resultaten voor deze zoekterm gevonden.</p>

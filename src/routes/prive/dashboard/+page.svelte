@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { DashboardHeader } from '$components';
 
-	import { getDatum } from '$lib/utils/get_date';
+	import { getDatum } from '$lib/utils/strings.js';
 	import Delete from '$assets/delete.svg';
 	import Edit from '$assets/edit.svg';
 	let { data } = $props();
