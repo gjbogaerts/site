@@ -51,7 +51,7 @@
 			position: absolute;
 			font-size: 2rem;
 			content: 'Weblog van Geert-Jan Bogaerts';
-			top: 12rem;
+			top: 13rem;
 			display: block;
 			width: 100%;
 			text-align: center;
@@ -61,6 +61,9 @@
 		.nav ul {
 			flex-direction: column;
 			gap: 1em;
+		}
+		header::after {
+			top: 13rem;
 		}
 	}
 </style>
