@@ -4,6 +4,9 @@
 	import { page } from '$app/state';
 	import { invalidate } from '$app/navigation';
 	import { setUserState } from '$lib/state/user-state.svelte';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+
+	injectSpeedInsights();
 
 	let { data, children } = $props();
 	let { session, supabase, user, response } = $derived(data);
