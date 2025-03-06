@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { redirect } from '@sveltejs/kit';
+	import { goto } from '$app/navigation';
 	// import type { PageProps } from './$types';
 	let { data } = $props();
 	// let slug = $Page.
@@ -8,7 +9,7 @@
 	const removePost = async (id: number) => {
 		// console.log('Removing post with id ', id);
 		let response = await data.supabase.from('berichten').delete().eq('id', id);
-		redirect(303, '/prive/dashboard');
+		goto('/prive/dashboard', { replaceState: true });
 	};
 </script>
 
