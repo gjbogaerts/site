@@ -19,7 +19,7 @@ export const actions = {
 		let imagePath = null;
 
 		const image = formData.get('image') as File;
-		if (image !== null) {
+		if (image.size > 0 && image.name != '') {
 			// console.log(image);
 			// writeFileSync(`static/${image.name}`, Buffer.from(await image.arrayBuffer()));
 

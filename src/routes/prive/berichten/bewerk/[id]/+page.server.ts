@@ -13,14 +13,14 @@ export const actions = {
 		const formData = await request.formData();
 		// console.log(supabase);
 
-		const image = formData.get('image') as File;
-		// console.log(image);
+		const newImage = formData.get('image') as File;
+		console.log(newImage);
 		// writeFileSync(`static/${image.name}`, Buffer.from(await image.arrayBuffer()));
 		let imagePath = null;
-		if (image !== null) {
+		if (newImage.size > 0 && newImage.name !== '') {
 			const uploadResponse = await supabase.storage
 				.from('images')
-				.upload(`${Math.random()}_${image.name}`, image);
+				.upload(`${Math.random()}_${newImage.name}`, newImage);
 			if (uploadResponse.error != null) {
 				fail(400, { message: 'Image upload werkte niet' });
 			}
@@ -47,16 +47,15 @@ export const actions = {
 		//van markdown naar html:
 		// let contentToSave = Marked.parse(content);
 		// console.log(title, contentToSave, publication_date, status, user_id);
+		let contentToInsert;
+		if (imagePath !== null) {
+			contentToInsert = { title, content, publication_date, status, user_id, image: imagePath };
+		} else {
+			contentToInsert = { title, content, publication_date, status, user_id };
+		}
 		const { response, error } = await supabase
 			.from('berichten')
-			.update({
-				title,
-				content,
-				publication_date,
-				status,
-				user_id,
-				image: imagePath
-			})
+			.update(contentToInsert)
 			.eq('id', id);
 		if (error) {
 			fail(400, error);
