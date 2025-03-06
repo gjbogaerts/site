@@ -26,3 +26,26 @@ export const getFirstParagraph = (htmlString: string): string => {
 	const firstParagraph = htmlString.slice(firstParagraphStart, firstParagraphEnd);
 	return firstParagraph;
 };
+
+export function sanitizeStatusForMastodon(status: string): string {
+	// Remove leading and trailing whitespace
+	let sanitizedStatus = status.trim();
+
+	// Replace multiple spaces with a single space
+	sanitizedStatus = sanitizedStatus.replace(/\s+/g, ' ');
+
+	// Escape special characters
+	sanitizedStatus = sanitizedStatus
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#039;');
+
+	// Ensure the status length is within Mastodon's limit (500 characters)
+	if (sanitizedStatus.length > 500) {
+		sanitizedStatus = sanitizedStatus.substring(0, 500);
+	}
+
+	return sanitizedStatus;
+}

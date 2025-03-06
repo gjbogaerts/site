@@ -1,8 +1,9 @@
 // import { supabase } from '$lib/supabaseClient';
+import { MASTODON_VISIBILITY } from '$env/static/private';
 import { redirect, fail } from '@sveltejs/kit';
-import { writeFileSync } from 'fs';
-// import { setUserState } from '$lib/state/user-state.svelte.js';
 import { Marked } from '@ts-stack/markdown';
+import { postToMastodon, type MastodonPost } from '$lib/fediverse/mastodon';
+import slugify from 'typescript-slugify';
 
 import { PUBLIC_SUPABASE_IMAGE_STORAGE } from '$env/static/public';
 export const actions = {
@@ -31,6 +32,7 @@ export const actions = {
 		const publication_date = formData.get('publication_date') as Date;
 		const status = formData.get('status') as string;
 		const user_id = formData.get('user_id') as string;
+		const mastodon_summary = formData.get('mastodon_summary') as string;
 		const tags = formData.get('tags') as string;
 
 		const tagArray = tags.split(',');
@@ -44,7 +46,7 @@ export const actions = {
 		//van markdown naar html:
 		let contentToSave = Marked.parse(content);
 		// console.log(title, contentToSave, publication_date, status, user_id);
-		let { error, data } = await supabase
+		let { data, error } = await supabase
 			.from('berichten')
 			.insert({
 				title,
@@ -52,16 +54,19 @@ export const actions = {
 				publication_date,
 				status,
 				user_id,
+				mastodon_summary,
 				image: imagePath
 			})
 			.select();
-
+		console.log(error);
+		console.log(data);
 		if (error) {
 			fail(400, error);
 		}
+		let newPostId: number = 0;
 		// console.log(data);
 		if (data) {
-			let newPostId = data[0].id;
+			newPostId = data[0].id;
 			// console.log(`New Post: ${newPostId}`);
 			// console.log(tagsToInsert);
 			let tagResult = await supabase.from('tags').upsert(tagsToInsert, { ignoreDuplicates: true });
@@ -86,8 +91,31 @@ export const actions = {
 			let finalResult = await supabase.from('bericht_x_tag').insert(tagsToCrossFile);
 			// console.log(finalResult);
 		}
-		// console.log(result.data);
-		redirect(303, '/prive/dashboard');
+
+		//OK, alles is geïnsert, we gaan nu Mastodon inlichten.
+		if (newPostId === 0) {
+			redirect(303, '/prive/dashboard');
+		} else {
+			const url = `https://raker.nl/bericht/${slugify(title)}/${newPostId}`;
+			const mastodonStatus = `Nieuw bericht op mijn blog ${url}: ${title} - ${mastodon_summary}`;
+			// console.log(mastodonStatus);
+			try {
+				const mastodonPost: MastodonPost = await postToMastodon(
+					mastodonStatus,
+					MASTODON_VISIBILITY as 'public' | 'unlisted' | 'private' | 'direct'
+				);
+				console.log('Succesfully posted to Mastodon');
+				await supabase
+					.from('berichten')
+					.update({ mastodon_post_id: mastodonPost.id })
+					.eq('id', newPostId);
+			} catch (error) {
+				console.log(error);
+			}
+
+			// console.log(result.data);
+			redirect(303, '/prive/dashboard');
+		}
 	}
 };
 

@@ -1,8 +1,18 @@
 <script lang="ts">
-	let { user, content, title, publication_date = '', status, id, tags = '' } = $props();
+	let {
+		user,
+		content,
+		title,
+		publication_date = '',
+		status,
+		id,
+		tags = '',
+		mastodon_summary = ''
+	} = $props();
 	// console.log(user, content, title, publication_date, status, id);
 	let userId = user.id != null ? user.id : user;
 	let postId = id != null ? id : null;
+	let mastodonSummary = mastodon_summary !== '' ? mastodon_summary : '';
 	let timeElapsed = Date.now();
 	let today = new Date(timeElapsed);
 	let dateValue = today.toISOString().slice(0, 10);
@@ -39,6 +49,9 @@
 		value={tags}
 	/>
 	<input type="file" name="image" />
+	<textarea name="mastodon_summary" placeholder="Tekst voor Mastodon" class="wide"
+		>{mastodonSummary}</textarea
+	>
 	<input type="hidden" name="user_id" value={userId} />
 	<input type="hidden" name="id" value={postId} />
 	<button>Opslaan</button>
