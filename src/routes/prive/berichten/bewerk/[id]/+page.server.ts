@@ -16,16 +16,17 @@ export const actions = {
 		const image = formData.get('image') as File;
 		// console.log(image);
 		// writeFileSync(`static/${image.name}`, Buffer.from(await image.arrayBuffer()));
-
-		const uploadResponse = await supabase.storage
-			.from('images')
-			.upload(`${Math.random()}_${image.name}`, image);
-		if (uploadResponse.error != null) {
-			fail(400, { message: 'Image upload werkte niet' });
+		let imagePath = null;
+		if (image !== null) {
+			const uploadResponse = await supabase.storage
+				.from('images')
+				.upload(`${Math.random()}_${image.name}`, image);
+			if (uploadResponse.error != null) {
+				fail(400, { message: 'Image upload werkte niet' });
+			}
+			// console.log(uploadResponse);
+			imagePath = PUBLIC_SUPABASE_IMAGE_STORAGE + uploadResponse.data.fullPath;
 		}
-		// console.log(uploadResponse);
-		const imagePath = PUBLIC_SUPABASE_IMAGE_STORAGE + uploadResponse.data.fullPath;
-
 		const title = formData.get('title') as string;
 		const content = formData.get('content') as string;
 		const publication_date = formData.get('publication_date') as Date;
@@ -36,10 +37,12 @@ export const actions = {
 		let tags = formData.get('tags') as string;
 
 		const tagArray = tags.split(',');
-		const tagsToInsert = tagArray.map((tagNo) => {
-			let tagValue = tagNo.trim();
+		let tagsToInsert = tagArray.map((tagNo) => {
+			let tagValue = tagNo.trim().toLowerCase();
+			if (tagValue === '') return null;
 			return { tag: tagValue };
 		});
+		tagsToInsert = tagsToInsert.filter((value) => value !== null);
 		// console.log(formData.FormData.title);
 		//van markdown naar html:
 		// let contentToSave = Marked.parse(content);
@@ -58,6 +61,7 @@ export const actions = {
 		if (error) {
 			fail(400, error);
 		}
+		// console.log(id);
 		// we remove existing tags
 		let removed = await supabase.from('bericht_x_tag').delete().eq('bericht_id', id);
 
@@ -72,6 +76,7 @@ export const actions = {
 		}
 		// now we select all given tags, and use the post id to link them together
 		let tagsToSearch = tagsToInsert.map((val) => {
+			if (val === null || val === undefined) return;
 			return val.tag;
 		});
 		let tagsResult = await supabase.from('tags').select().in('tag', tagsToSearch);
