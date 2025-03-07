@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { convertDatetime } from '$lib/utils/strings';
+	import MastodonLogo from '$assets/wordmark-black-text.svg';
 	let { comments, bericht } = $props();
 </script>
 
@@ -7,8 +8,8 @@
 	Reageren op dit bericht? Dat kan op mijn <a
 		target="_blank"
 		href={`https://social.publicspaces.net/@geertjan/${bericht.mastodon_post_id}`}
-		>Mastodon-account</a
-	>
+		><img src={MastodonLogo} alt="Mastodon logo" class="mastodon-logo" /> account</a
+	><span class="footnote"><a href="#footnote">*</a></span>
 </h4>
 
 {#if comments.length > 0}
@@ -29,7 +30,28 @@
 	</section>
 {/if}
 
+<p class="footnote-text tiny-font mt-l" id="footnote">
+	<span class="footnote">*</span>Commentaren die je op Mastodon plaatst, worden niet lokaal
+	opgeslagen; als je daar je commentaar aanpast of verwijdert, gebeurt dat ook in deze site nadat je
+	deze pagina hebt ververst.
+</p>
+
 <style>
+	.mastodon-logo {
+		width: 100px;
+		transform: translateY(0.7rem);
+	}
+
+	.footnote {
+		display: inline-block;
+		margin: 0 1rem;
+		transform: translateY(-5px);
+		color: red;
+	}
+	.footnote a {
+		text-decoration: none;
+	}
+
 	.comment-invite {
 		font-weight: 700;
 		font-size: 2.2rem;
