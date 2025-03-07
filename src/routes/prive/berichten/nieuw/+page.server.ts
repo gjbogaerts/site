@@ -1,7 +1,7 @@
 // import { supabase } from '$lib/supabaseClient';
 import { MASTODON_VISIBILITY, ENVIRONMENT } from '$env/static/private';
 import { redirect, fail } from '@sveltejs/kit';
-import { Marked } from '@ts-stack/markdown';
+// import { Marked } from '@ts-stack/markdown';
 import { postToMastodon, type MastodonPost } from '$lib/fediverse/mastodon';
 import slugify from 'typescript-slugify';
 import { PUBLIC_SUPABASE_IMAGE_STORAGE } from '$env/static/public';
@@ -51,13 +51,13 @@ export const actions = {
 
 		// console.log(formData.FormData.title);
 		//van markdown naar html:
-		let contentToSave = Marked.parse(content);
+		// let contentToSave = Marked.parse(content);
 		// console.log(title, contentToSave, publication_date, status, user_id);
 		let { data, error } = await supabase
 			.from('berichten')
 			.insert({
 				title,
-				content: contentToSave,
+				content,
 				publication_date,
 				status,
 				user_id,

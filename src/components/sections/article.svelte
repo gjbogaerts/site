@@ -1,7 +1,10 @@
 <script lang="ts">
+	import { Marked } from '@ts-stack/markdown';
+
 	import { getFirstParagraph, getTagString, getDatum, processTags } from '$lib/utils/strings';
 
 	const { bericht } = $props();
+	const berichtContent = Marked.parse(bericht.content);
 </script>
 
 <svelte:head>
@@ -24,7 +27,7 @@
 		{#if bericht!.image !== null}
 			<img class="feature" src={bericht!.image} alt={`Illustratie bij ${bericht!.title}`} />
 		{/if}
-		{@html bericht!.content}
+		{@html berichtContent}
 	</div>
 </article>
 
@@ -44,6 +47,10 @@
 		float: left;
 		width: 40%;
 		margin: 1rem 2rem;
+	}
+
+	.content img.feature {
+		margin: 0;
 	}
 	.meta-container {
 		display: flex;

@@ -30,11 +30,13 @@ export async function load() {
 		.single();
 	if (error) throw error;
 	let comments: MastodonComment[] = [];
-	try {
-		// const testid = '109869516945050838';
-		comments = await getMastodonComments(bericht.mastodon_post_id);
-	} catch (error) {
-		console.error('Error fetching comments from Mastodon', error);
+	if (bericht.mastodon_post_id !== null) {
+		try {
+			// const testid = '109869516945050838';
+			comments = await getMastodonComments(bericht.mastodon_post_id);
+		} catch (error) {
+			console.error('Error fetching comments from Mastodon', error);
+		}
 	}
 	// console.log(data);
 

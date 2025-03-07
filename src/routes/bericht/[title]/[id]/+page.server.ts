@@ -16,14 +16,14 @@ export const load: PageServerLoad = async ({ params }) => {
 	// console.log(data);
 	if (error) throw error;
 	let comments: MastodonComment[] = [];
-	// if (bericht.mastodon_post_id) {
-	try {
-		// const testid = '109869516945050838';
-		comments = await getMastodonComments(bericht.mastodon_post_id);
-	} catch (error) {
-		console.error('Error fetching comments from Mastodon', error);
+	if (bericht.mastodon_post_id) {
+		try {
+			// const testid = '109869516945050838';
+			comments = await getMastodonComments(bericht.mastodon_post_id);
+		} catch (error) {
+			console.error('Error fetching comments from Mastodon', error);
+		}
 	}
-	// }
 
 	return { bericht, comments };
 };

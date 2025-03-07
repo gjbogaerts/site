@@ -42,7 +42,7 @@ export const load: LayoutLoad = async ({ data, depends, fetch }) => {
 	const response = await supabase
 		.from('berichten')
 		.select('id, title, date, publication_date')
-		.order('date', { ascending: false })
+		.order('publication_date', { ascending: false })
 		.eq('user_id', '33869a5d-6ab2-40e6-ba59-78a11bde0691')
 		.range(0, 10);
 
