@@ -9,6 +9,18 @@ export const getDatum = (bericht: any): string => {
 	return `${dag}-${maand}-${jaar}`;
 };
 
+export const convertDatetime = (datetimeStr: string): string => {
+	const dt = new Date(datetimeStr);
+	const pad = (n: number) => (n < 10 ? '0' + n : n);
+	const day = pad(dt.getUTCDate());
+	const month = pad(dt.getUTCMonth() + 1);
+	const year = dt.getUTCFullYear().toString().slice(-2); // Get last two digits of year
+	const hours = pad(dt.getUTCHours());
+	const minutes = pad(dt.getUTCMinutes());
+
+	return `${day}-${month}-${year}, ${hours}:${minutes}`;
+};
+
 export const processTags = (tags: any): string | undefined => {
 	const tagLinks = tags?.map((tag: any) => {
 		return `<a href="/tag/${slugify(tag.tag)}/${tag.id}">${tag.tag}</a>`;
