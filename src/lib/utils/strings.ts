@@ -39,6 +39,15 @@ export const getFirstParagraph = (htmlString: string): string => {
 	return firstParagraph;
 };
 
+export const truncateAtFirstBlankLine = (input: string): string => {
+	const lines = input.split('\n');
+	const cutoffIndex = lines.findIndex((line) => line.trim() === '');
+	if (cutoffIndex === -1) {
+		return input; // No blank line found, return the original string
+	}
+	return lines.slice(0, cutoffIndex).join('\n');
+};
+
 export function sanitizeStatusForMastodon(status: string): string {
 	// Remove leading and trailing whitespace
 	let sanitizedStatus = status.trim();

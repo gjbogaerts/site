@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import { Header, Sidebar, Footer } from '$components';
+	import { Header, Footer } from '$components';
 	import { page } from '$app/state';
 	import { invalidate } from '$app/navigation';
 	import { setUserState } from '$lib/state/user-state.svelte';
@@ -9,7 +9,7 @@
 	injectSpeedInsights();
 
 	let { data, children } = $props();
-	let { session, supabase, user, response } = $derived(data);
+	let { session, supabase, user } = $derived(data);
 	// $inspect(data);
 
 	let userState = setUserState({ session: data.session, supabase: data.supabase, user: data.user });
@@ -39,27 +39,6 @@
 	<Header />
 	<div class="main-container mt-l">
 		<div class="main">{@render children()}</div>
-		<Sidebar {response} />
 	</div>
 	<Footer />
 </div>
-
-<style>
-	.main-container {
-		display: flex;
-		gap: 5rem;
-	}
-	.main {
-		flex: 3;
-	}
-
-	@media screen and (max-width: 1100px) {
-		.main-container {
-			display: flex;
-			flex-direction: column;
-		}
-		.main {
-			width: 100%;
-		}
-	}
-</style>

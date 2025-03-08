@@ -194,6 +194,8 @@ export type Berichten = {
 	user_id?: string | null;
 	image?: string | null;
 	tags?: Tag[] | null;
+	mastodon_summary?: string | null;
+	mastodon_post_id?: string | null;
 };
 
 export type Tag = {

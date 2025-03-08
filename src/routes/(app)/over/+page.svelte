@@ -9,7 +9,7 @@
 	<h1>Over Raker</h1>
 	<p>
 		<img
-			src="https://raker.nl/wp-content/uploads/2025/01/GJ-1-scaled.jpg"
+			src="https://kzvshnjguxjobyzhpiyy.supabase.co/storage/v1/object/public/images//GJ-4-cmpr.JPG"
 			alt="Portret van Geert-Jan Bogaerts"
 		/>Mijn naam is Geert-Jan Bogaerts. Ik ben journalist van roeping, maar niet meer van beroep. Ik
 		werk nu als hoofd Digitaal bij de VPRO, maar ik begon mijn professionele carriere als journalist

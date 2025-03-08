@@ -38,6 +38,7 @@
 	.nav a {
 		text-decoration: none;
 		font-weight: bold;
+		color: black;
 	}
 	@media screen and (max-width: 1100px) {
 		p.motto {

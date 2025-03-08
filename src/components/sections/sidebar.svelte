@@ -3,10 +3,7 @@
 
 	import { getDatum } from '$lib/utils/strings';
 	const { response } = $props();
-
-	function sluggify(title: string) {
-		return slugify(title);
-	}
+	$inspect(response);
 </script>
 
 <aside class="other-stuff">
@@ -21,10 +18,10 @@
 	<div class="sticky">
 		<h3>Laatste tien</h3>
 		<ul>
-			{#each response.data as bericht}
+			{#each response as bericht}
 				<li>
 					<span class="datum tiny-font">{getDatum(bericht)}</span><a
-						href={`/bericht/${sluggify(bericht.title)}/${bericht.id}`}>{bericht.title}</a
+						href={`/bericht/${slugify(bericht.title)}/${bericht.id}`}>{bericht.title}</a
 					>
 				</li>
 			{/each}
