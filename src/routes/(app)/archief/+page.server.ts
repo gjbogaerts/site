@@ -8,6 +8,6 @@ export const load: PageServerLoad = async ({ params }) => {
 			count: 'estimated'
 		})
 		.range(0, 9)
-		.order('date', { ascending: false });
+		.order('publication_date', { ascending: false });
 	return { data, count };
 };
