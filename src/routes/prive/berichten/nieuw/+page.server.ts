@@ -113,7 +113,7 @@ export const actions = {
 						mastodonStatus,
 						MASTODON_VISIBILITY as 'public' | 'unlisted' | 'private' | 'direct'
 					);
-					console.log('Succesfully posted to Mastodon');
+					// console.log('Succesfully posted to Mastodon');
 					await supabase
 						.from('berichten')
 						.update({ mastodon_post_id: mastodonPost.id })

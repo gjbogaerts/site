@@ -14,7 +14,7 @@ export const actions = {
 		// console.log(supabase);
 
 		const newImage = formData.get('image') as File;
-		console.log(newImage);
+		// console.log(newImage);
 		// writeFileSync(`static/${image.name}`, Buffer.from(await image.arrayBuffer()));
 		let imagePath = null;
 		if (newImage.size > 0 && newImage.name !== '') {
