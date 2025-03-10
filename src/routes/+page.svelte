@@ -142,6 +142,13 @@
 		text-align: right;
 	}
 
+	@media screen and (max-width: 1000px) {
+		.header {
+			flex-direction: column;
+			gap: 3rem;
+		}
+	}
+
 	@media screen and (max-width: 700px) {
 		.grid {
 			grid-template-columns: auto;
