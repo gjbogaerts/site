@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Berichten } from '../../../index';
-	import { getDatum } from '$lib/utils/strings.js';
-	import slugify from 'typescript-slugify';
+	import { PostList } from '$components';
 	// import { Pagination } from '$components';
 	let { data } = $props();
 	// // $inspect(props);
@@ -29,28 +28,5 @@
 		hoe vaak ik van mening ben veranderd.
 	</p>
 	<!-- <Pagination {totalCount} {currentPage} /> -->
-	<ul class="mt-l">
-		{#each berichten as bericht}
-			<li class="bericht">
-				<p class="bericht-title">
-					<a href={`/bericht/${slugify(bericht.title)}/${bericht.id}`}>{bericht.title}</a>
-				</p>
-				<p class="tiny-font">{getDatum(bericht)}</p>
-			</li>
-		{/each}
-	</ul>
-	<!-- <Pagination {totalCount} {currentPage} /> -->
+	<PostList {berichten} />
 </div>
-
-<style>
-	.bericht {
-		display: flex;
-		gap: 5rem;
-		justify-content: space-between;
-		align-items: baseline;
-		margin: 1rem 0;
-	}
-	.bericht a {
-		color: rgb(33, 33, 33);
-	}
-</style>

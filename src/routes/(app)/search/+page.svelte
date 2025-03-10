@@ -1,7 +1,6 @@
 <script lang="ts">
-	import slugify from 'typescript-slugify';
+	import { PostList } from '$components';
 
-	import { getDatum } from '$lib/utils/strings.js';
 	const { data } = $props();
 	interface SearchResults {
 		id: number;
@@ -23,22 +22,5 @@
 
 <h1 class="mb-m">Zoekresultaten voor "<em>{data.rawQ}</em>"</h1>
 <p class="mb-s">Er zijn {data.count} resultaten voor deze zoekterm gevonden.</p>
-<ol>
-	{#each results as bericht}
-		<li>
-			<a href={`/bericht/${slugify(bericht.title)}/${bericht.id}`}> {bericht.title}</a>
-			<span class="datum small-font mb-s">{getDatum(bericht)}</span>
-		</li>
-	{/each}
-</ol>
 
-<style>
-	ol,
-	li {
-		list-style-type: decimal;
-	}
-	.datum {
-		display: block;
-		text-align: right;
-	}
-</style>
+<PostList berichten={results} />

@@ -11,7 +11,25 @@
 	<h1 class="error">Oei, er is iets mis</h1>
 	<p>Ik ga er zo snel mogelijk achteraan. Sorry!</p>
 {/if}
-
+<div class="header">
+	<div class="waarom">
+		<h3>Waarom dit blog?</h3>
+		<p>
+			In het najaar van 2024 ben ik begonnen met een journalistiek onderzoek naar wat ik voorlopig
+			'de middenmotor' noem; de unieke samenwerking tussen publieke organisaties, burgerbewegingen
+			en goedwillende marktpartijen om dringende maatschappelijke en culturele vraagstukken op te
+			lossen. Dit blog is een reflectie van wat ik tijdens dat onderzoek tegenkom, helpt mij om mijn
+			gedachten te ordenen, en levert, door de reacties die het hopelijk inspireert, nieuwe
+			inzichten op.
+		</p>
+	</div>
+	<div class="search-container">
+		<form method="get" action="/search">
+			<input type="text" name="q" placeholder="Je zoekterm..." class="search-input" />
+			<button class="search-btn">Zoeken</button>
+		</form>
+	</div>
+</div>
 <div class="grid">
 	{#each frontpageBerichten as bericht, index}
 		<div class={index === 0 ? 'grid-item item0' : 'grid-item'}>
@@ -42,6 +60,36 @@
 <div class="archief mt-l"><p><a href="/archief">Oudere verhalen</a></p></div>
 
 <style>
+	.header {
+		display: flex;
+		justify-content: space-between;
+		border-radius: 8px;
+		gap: 15rem;
+		background-color: rgb(225, 215, 215);
+		/* columns: 3fr 1fr; */
+		margin: 1rem 0 3rem;
+		padding: 2rem;
+	}
+
+	.waarom {
+		flex: 4;
+		/* max-width: 50rem; */
+	}
+
+	.search-container {
+		flex: 1;
+		/* display: flex;
+		align-items: flex-start;
+		justify-content: center; */
+	}
+	.search-input {
+		border: 1px solid black;
+		/* margin-left: 3rem; */
+	}
+	.search-btn {
+		/* margin-right: 3rem; */
+		padding: 1rem;
+	}
 	.error {
 		color: rgb(219, 33, 40);
 	}

@@ -6,3 +6,4 @@ export { default as Footer } from './sections/footer.svelte';
 export { default as Pagination } from './ui/pagination.svelte';
 export { default as Article } from './sections/article.svelte';
 export { default as Comments } from './sections/comments.svelte';
+export { default as PostList } from './sections/post_list.svelte';
