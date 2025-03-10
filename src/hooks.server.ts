@@ -8,7 +8,7 @@ import { PUBLIC_SUPABASE_PROJECT_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/stat
 Sentry.init({
 	dsn: 'https://8b461a91e173f632b3f51cf911ac4560@o4508902956597248.ingest.de.sentry.io/4508902959218768',
 	tracesSampleRate: 1,
-	enabled: process.env.NODE_ENV === 'production'
+	enabled: process.env.NODE_ENV === 'prod'
 });
 
 const supabase: Handle = async ({ event, resolve }) => {
