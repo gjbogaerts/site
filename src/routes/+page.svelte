@@ -11,16 +11,16 @@
 	<h1 class="error">Oei, er is iets mis</h1>
 	<p>Ik ga er zo snel mogelijk achteraan. Sorry!</p>
 {/if}
-<div class="header">
+<div class="header mb-l">
 	<div class="waarom">
 		<h3>Waarom dit blog?</h3>
 		<p>
 			In het najaar van 2024 ben ik begonnen met een journalistiek onderzoek naar wat ik voorlopig
 			'de middenmotor' noem; de unieke samenwerking tussen publieke organisaties, burgerbewegingen
 			en goedwillende marktpartijen om dringende maatschappelijke en culturele vraagstukken op te
-			lossen. Dit blog is een reflectie van wat ik tijdens dat onderzoek tegenkom, helpt mij om mijn
-			gedachten te ordenen, en levert, door de reacties die het hopelijk inspireert, nieuwe
-			inzichten op.
+			lossen. Dit blog is een reflectie van wat ik tijdens dat onderzoek tegenkom en helpt mij om
+			mijn gedachten te ordenen. Daarnaast schrijf ik over mijn vakgebied: de digitale wereld en de
+			manier waarop digitaal en fysiek elkaar beïnvloeden.
 		</p>
 	</div>
 	<div class="search-container">
@@ -30,7 +30,7 @@
 		</form>
 	</div>
 </div>
-<div class="grid">
+<div class="grid mt-l">
 	{#each frontpageBerichten as bericht, index}
 		<div class={index === 0 ? 'grid-item item0' : 'grid-item'}>
 			{#if bericht.image !== null}
