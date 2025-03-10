@@ -4,12 +4,20 @@
 	import { getFirstParagraph, getTagString, getDatum, processTags } from '$lib/utils/strings';
 
 	const { bericht } = $props();
-	const berichtContent = Marked.parse(bericht.content);
+	// let bericht = $state({ title: '', content: '', tags: '', publication_date: '', image: '' });
+	// const props = $props();
+	// bericht = $derived(props.bericht);
+	// $inspect(bericht);
+	// const data = $state(bericht);
+	// $effect(()=>{
+	// 	 berichtContent=Marked.parse(data.content);
+	// })
+	// const berichtContent = Marked.parse(data.content);
 </script>
 
 <svelte:head>
 	<title>Raker | {bericht!.title}</title>
-	<meta name="description" content={`${getFirstParagraph(bericht!.content)}`} />
+	<meta name="description" content={`${getFirstParagraph(bericht.content)}`} />
 	<meta name="keywords" content={getTagString(bericht.tags)} />
 </svelte:head>
 <article>
@@ -27,7 +35,7 @@
 		{#if bericht!.image !== null}
 			<img class="feature" src={bericht!.image} alt={`Illustratie bij ${bericht!.title}`} />
 		{/if}
-		{@html berichtContent}
+		{@html Marked.parse(bericht.content)}
 	</div>
 </article>
 

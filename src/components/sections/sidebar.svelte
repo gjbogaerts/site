@@ -3,18 +3,17 @@
 
 	import { getDatum } from '$lib/utils/strings';
 	const { response } = $props();
-	$inspect(response);
+	// $inspect(response);
 </script>
 
 <aside class="other-stuff">
 	<div class="zoeken">
 		<form method="get" action="/search">
-			<input type="search" name="q" placeholder="Wat zoek je?" />
-			<button class="zoeken mt-s">Zoeken</button>
+			<input type="search" name="q" placeholder="Je zoekterm..." />
+			<button class="zoeken">Zoeken</button>
 		</form>
 	</div>
 
-	<div class="underscore"></div>
 	<div class="sticky">
 		<h3>Laatste tien</h3>
 		<ul>
