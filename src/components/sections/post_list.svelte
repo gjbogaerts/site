@@ -25,7 +25,4 @@
 		align-items: baseline;
 		margin: 1rem 0;
 	}
-	.bericht a {
-		color: rgb(33, 33, 33);
-	}
 </style>

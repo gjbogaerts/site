@@ -1,7 +1,6 @@
 <script lang="ts">
-	import slugify from 'typescript-slugify';
+	import { PostList } from '$components';
 
-	import { getDatum } from '$lib/utils/strings';
 	interface Content {
 		id: number;
 		date: string;
@@ -31,24 +30,5 @@
 </h1>
 
 <section>
-	<ul>
-		{#each content as b}
-			<li class="mb-s">
-				<a class="link" href={`/bericht/${slugify(b.title)}/${b.id}`}>{b.title}</a>
-				<span class="datum small-font">{getDatum(b)}</span>
-			</li>
-		{/each}
-	</ul>
+	<PostList berichten={content} />
 </section>
-
-<style>
-	ul,
-	li {
-		list-style-type: disc;
-		margin-left: 2em;
-	}
-	.datum {
-		display: block;
-		text-align: right;
-	}
-</style>
