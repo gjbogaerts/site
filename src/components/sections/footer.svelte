@@ -55,4 +55,13 @@
 			flex-direction: column;
 		}
 	}
+	@media screen and (max-width: 450px) {
+		.footer {
+			display: flex;
+		}
+		.cc-img {
+			align-self: flex-start;
+			margin-bottom: 10rem;
+		}
+	}
 </style>

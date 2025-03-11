@@ -20,9 +20,15 @@
 <style>
 	.bericht {
 		display: flex;
-		gap: 5rem;
+		/* gap: 5rem; */
 		justify-content: space-between;
 		align-items: baseline;
 		margin: 1rem 0;
+	}
+	@media screen and (max-width: 450px) {
+		.bericht {
+			/* gap: 1rem; */
+			flex-wrap: wrap;
+		}
 	}
 </style>
