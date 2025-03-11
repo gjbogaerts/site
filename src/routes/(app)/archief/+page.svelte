@@ -23,9 +23,7 @@
 	<p>
 		Dit is het complete archief van Raker. Een serie posts ({totalCount} inmiddels) die zijn geschreven
 		tussen 2005 en 2015, met een hervatting in 2025. De oude verhalen zijn inmiddels een aantal keer
-		gekopieerd naar nieuwe CMS'en, en ik ben er niet zeker van dat ze op de correcte manier worden weergegeven.
-		Ik ontsluit ze toch via deze pagina omdat het wellicht de moeite waard is om nog eens te bekijken
-		hoe vaak ik van mening ben veranderd.
+		gekopieerd naar nieuwe CMS'en, dus verwijzingen, links en layout zullen niet overal meer kloppen.
 	</p>
 	<!-- <Pagination {totalCount} {currentPage} /> -->
 	<PostList {berichten} />
