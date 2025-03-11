@@ -24,6 +24,7 @@
 		<a href="https://linkedin.com/in/gjbogaerts" aria-label="Mijn profiel op LinkedIn">
 			<img src="/LI-Logo.png" alt="Mijn profiel op LinkedIn" width="80" />
 		</a>
+		<a href="/rss.xml"><img src="/rss.png" width="40" alt="RSS-Feed" /></a>
 	</div>
 	<div class="cc-img">
 		<img src="/by-sa.svg" alt="CC-BY-SA licentie logo" />
@@ -47,6 +48,7 @@
 	} */
 	.socials {
 		display: flex;
+		align-items: center;
 		gap: 3rem;
 	}
 	.cc-img {

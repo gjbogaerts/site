@@ -2,13 +2,15 @@ import * as Sentry from '@sentry/sveltekit';
 import { createServerClient } from '@supabase/ssr';
 import { type Handle, redirect, type HandleServerError } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
+import { ENVIRONMENT } from '$env/static/private';
 
 import { PUBLIC_SUPABASE_PROJECT_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
 
 Sentry.init({
 	dsn: 'https://8b461a91e173f632b3f51cf911ac4560@o4508902956597248.ingest.de.sentry.io/4508902959218768',
 	tracesSampleRate: 1,
-	enabled: process.env.NODE_ENV === 'prod'
+	enabled: ENVIRONMENT === 'prod'
+	// enabled: false
 });
 
 const supabase: Handle = async ({ event, resolve }) => {
@@ -93,6 +95,9 @@ const authGuard: Handle = async ({ event, resolve }) => {
 export const handleError: HandleServerError = Sentry.handleErrorWithSentry(
 	async ({ error, event, status, message }) => {
 		const errorId = crypto.randomUUID();
+		if (ENVIRONMENT === 'dev') {
+			console.error(error, event, errorId, status);
+		}
 		Sentry.captureException(error, { extra: { event, errorId, status } });
 		return {
 			message:
@@ -103,3 +108,5 @@ export const handleError: HandleServerError = Sentry.handleErrorWithSentry(
 );
 
 export const handle: Handle = sequence(Sentry.sentryHandle(), sequence(supabase, authGuard));
+
+// export const handle: Handle = sequence(supabase, authGuard);

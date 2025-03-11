@@ -17,6 +17,7 @@
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",
 		"@sveltejs/adapter-auto": "^4.0.0",
+		"@sveltejs/adapter-vercel": "^5.6.3",
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
 		"eslint": "^9.18.0",
@@ -37,6 +38,7 @@
 		"@supabase/supabase-js": "^2.48.1",
 		"@ts-stack/markdown": "^1.5.0",
 		"@vercel/speed-insights": "^1.2.0",
+		"feed": "^4.2.2",
 		"string-strip-html": "^13.4.8",
 		"typescript-slugify": "^1.0.1"
 	}
