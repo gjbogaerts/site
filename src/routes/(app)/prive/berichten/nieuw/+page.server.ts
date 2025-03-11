@@ -104,7 +104,7 @@ export const actions = {
 		if (newPostId === 0) {
 			redirect(303, '/prive/dashboard');
 		} else {
-			if (ENVIRONMENT !== 'dev') {
+			if (ENVIRONMENT !== 'dev' && mastodon_summary !== '') {
 				const url = `https://raker.nl/bericht/${slugify(title)}/${newPostId}`;
 				const mastodonStatus = `Nieuw bericht op mijn blog ${url}: ${title} - ${mastodon_summary}`;
 				// console.log(mastodonStatus);
