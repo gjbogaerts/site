@@ -7,7 +7,7 @@
 
 <header class="header mt-m">
 	<a href="/"> <img src={Logo} alt="Logo Raker" class="logo" /></a>
-	<p class="motto">Het weblog van Geert-Jan Bogaerts</p>
+	<p class="credit">Geert-Jan Bogaerts</p>
 	<nav class="nav">
 		<ul>
 			{#if user}
@@ -41,7 +41,7 @@
 		color: black;
 	}
 	@media screen and (max-width: 1100px) {
-		p.motto {
+		p.credit {
 			display: none;
 		}
 		header {
@@ -51,7 +51,7 @@
 		header::after {
 			position: absolute;
 			font-size: 2rem;
-			content: 'Weblog van Geert-Jan Bogaerts';
+			content: 'Geert-Jan Bogaerts';
 			top: 13rem;
 			display: block;
 			width: 100%;

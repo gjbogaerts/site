@@ -96,6 +96,9 @@
 	.image-container {
 		width: 100%;
 		height: 25rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	.feature-img {
 		max-width: 100%;
@@ -151,11 +154,15 @@
 
 	@media screen and (max-width: 700px) {
 		.grid {
-			grid-template-columns: auto;
+			display: flex;
+			flex-direction: column;
+			/* grid-template-columns: auto; */
 		}
 		.item0 {
-			grid-column-start: 1;
-			grid-column-end: 1;
+			display: flex;
+			flex-direction: column;
+			/* grid-column-start: 1; */
+			/* grid-column-end: 1; */
 		}
 	}
 </style>
