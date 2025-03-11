@@ -5,8 +5,10 @@
 	import { invalidate } from '$app/navigation';
 	import { setUserState } from '$lib/state/user-state.svelte';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
 
 	injectSpeedInsights();
+	injectAnalytics();
 
 	let { data, children } = $props();
 	let { session, supabase, user } = $derived(data);
