@@ -13,6 +13,9 @@
 			een linkje plaatst naar deze site en benoemt waar je het materiaal vandaan hebt, en
 			herdistributie onder gelijke voorwaarden mogelijk maakt.
 		</p>
+		<p class="tiny-font mt-s mb-s">
+			<a href="https://github.com/gjbogaerts/site">Broncode van deze site.</a>
+		</p>
 	</div>
 	<div class="socials mt-m">
 		<a href="https://social.publicspaces.net/@geertjan" aria-label="Volg me op Mastodon"
