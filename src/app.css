@@ -159,6 +159,11 @@ p {
 	margin-right: 25%;
 }
 
+blockquote {
+	border-left: 1px solid var(--linecolor);
+	padding-left: 2rem;
+}
+
 input,
 textarea,
 select {
