@@ -44,6 +44,15 @@
 		p {
 			margin: 2rem 0;
 		}
+		li {
+			margin-left: 2rem;
+		}
+		ol li {
+			list-style-type: decimal;
+		}
+		ul li {
+			list-style-type: disc;
+		}
 	}
 
 	.content .feature {
