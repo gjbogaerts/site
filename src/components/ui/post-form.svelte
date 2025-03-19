@@ -7,7 +7,9 @@
 		status,
 		id,
 		tags = '',
-		mastodon_summary = ''
+		mastodon_summary = '',
+		sticky = true,
+		taglist
 	} = $props();
 	// console.log(user, content, title, publication_date, status, id);
 	let userId = user.id != null ? user.id : user;
@@ -19,6 +21,12 @@
 	if (publication_date === '') {
 		publication_date = dateValue;
 	}
+	const fillTag = (tagName: string) => {
+		// console.log(tagName);
+		let tagArray = tags.split(',');
+		tagArray.push(tagName);
+		tags = tagArray.join(',');
+	};
 </script>
 
 <form method="post" enctype="multipart/form-data">
@@ -41,13 +49,24 @@
 			>
 		</select>
 	</div>
+	<div class="form-div-container labeled">
+		<label for="sticky">Sticky?</label><input type="checkbox" name="sticky" checked={sticky} />
+	</div>
 	<input
 		type="text"
 		name="tags"
+		id="tags"
 		placeholder="Een of meerdere, door een komma gescheiden, tags"
 		class="wide"
 		value={tags}
 	/>
+	<select multiple name="tag-list" class="taglist">
+		{#each taglist as tagelement}
+			<option value={tagelement.tag} onclick={() => fillTag(tagelement.tag)}
+				>{tagelement.tag}</option
+			>
+		{/each}
+	</select>
 	<input type="file" name="image" />
 	<textarea name="mastodon_summary" placeholder="Tekst voor Mastodon" class="wide"
 		>{mastodonSummary}</textarea
@@ -68,11 +87,37 @@
 		display: flex;
 		gap: 5rem;
 	}
-	select,
-	option {
+
+	.form-div-container.labeled {
+		gap: 1rem;
+		align-items: center;
+		justify-content: flex-start;
+	}
+	.form-div-container select,
+	.form-div-container option {
 		width: 30rem;
 	}
-	.form-div-container input {
-		flex: 1;
+	label {
+		font-size: 1.8rem;
+		width: auto;
 	}
+	input[type='checkbox'] {
+		width: 2.5rem;
+	}
+
+	select,
+	option {
+		width: 100%;
+	}
+
+	.taglist {
+		height: 20rem;
+	}
+	.taglist option {
+		margin: 0;
+		/* height: 1rem; */
+	}
+	/* .form-div-container input {
+		flex: 1;
+	} */
 </style>
