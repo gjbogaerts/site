@@ -196,6 +196,7 @@ export type Berichten = {
 	tags?: Tag[] | null;
 	mastodon_summary?: string | null;
 	mastodon_post_id?: string | null;
+	sticky?: boolean;
 };
 
 export type Tag = {

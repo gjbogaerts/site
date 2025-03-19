@@ -3,13 +3,13 @@
 
 	let { data, children } = $props();
 	// $inspect(data);
-	let { berichten } = $derived(data);
-	// $inspect(data);
+	let { berichten, stickies } = $derived(data);
+	// $inspect(stickies);
 </script>
 
 <div class="main-container mt-l">
 	<div class="main">{@render children()}</div>
-	<Sidebar response={berichten} />
+	<Sidebar response={berichten} {stickies} />
 </div>
 
 <style>

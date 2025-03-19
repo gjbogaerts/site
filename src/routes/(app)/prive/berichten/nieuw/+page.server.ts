@@ -39,6 +39,7 @@ export const actions = {
 		const user_id = formData.get('user_id') as string;
 		const mastodon_summary = formData.get('mastodon_summary') as string;
 		const tags = formData.get('tags') as string;
+		const sticky = formData.get('sticky') as boolean;
 
 		const tagArray = tags.split(',');
 		let tagsToInsert = tagArray.map((tagNo) => {
@@ -62,7 +63,8 @@ export const actions = {
 				status,
 				user_id,
 				mastodon_summary,
-				image: imagePath
+				image: imagePath,
+				sticky
 			})
 			.select();
 		// console.log(error);

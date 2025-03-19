@@ -32,6 +32,7 @@ export const actions = {
 		const publication_date = formData.get('publication_date') as Date;
 		const status = formData.get('status') as string;
 		const user_id = formData.get('user_id') as string;
+		const sticky = formData.get('sticky') as boolean;
 		let tmp_id = formData.get('id') as string;
 		const id = parseInt(tmp_id);
 		let tags = formData.get('tags') as string;
@@ -49,9 +50,17 @@ export const actions = {
 		// console.log(title, contentToSave, publication_date, status, user_id);
 		let contentToInsert;
 		if (imagePath !== null) {
-			contentToInsert = { title, content, publication_date, status, user_id, image: imagePath };
+			contentToInsert = {
+				title,
+				content,
+				publication_date,
+				sticky,
+				status,
+				user_id,
+				image: imagePath
+			};
 		} else {
-			contentToInsert = { title, content, publication_date, status, user_id };
+			contentToInsert = { title, content, publication_date, sticky, status, user_id };
 		}
 		const { response, error } = await supabase
 			.from('berichten')

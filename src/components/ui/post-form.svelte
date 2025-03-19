@@ -8,7 +8,7 @@
 		id,
 		tags = '',
 		mastodon_summary = '',
-		sticky = true,
+		sticky,
 		taglist
 	} = $props();
 	// console.log(user, content, title, publication_date, status, id);

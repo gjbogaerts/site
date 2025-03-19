@@ -8,7 +8,7 @@
 	// $inspect(data.taglist);
 	// $inspect(taglist);
 	// // console.log(data.user_id, data.title, data.id);
-	let { user_id, title, content, publication_date, status, id, tags } = data.bericht;
+	let { user_id, title, content, publication_date, status, id, tags, sticky } = data.bericht;
 	let tagValues: string = $state('');
 	let tagArray = [];
 	if (tags != null) {
@@ -29,4 +29,5 @@
 	{id}
 	tags={tagValues}
 	taglist={data.taglist}
+	{sticky}
 />
