@@ -47,6 +47,7 @@
 		header {
 			position: relative;
 			height: 13rem;
+			margin-bottom: 5rem;
 		}
 		header::after {
 			position: absolute;
@@ -65,6 +66,9 @@
 		}
 		header::after {
 			top: 13rem;
+		}
+		header {
+			margin-bottom: 5rem;
 		}
 	}
 </style>

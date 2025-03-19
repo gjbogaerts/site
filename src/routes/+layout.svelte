@@ -44,3 +44,10 @@
 	</div>
 	<Footer />
 </div>
+
+<style>
+	.main-container {
+		max-width: 100rem;
+		margin: 0 auto;
+	}
+</style>
